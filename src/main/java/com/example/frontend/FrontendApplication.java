@@ -50,9 +50,12 @@ public class FrontendApplication {
 
 		@GetMapping()
 		public String init(Model model) {
+			System.out.println("frontend start.");
+			System.out.println("  appBackendUrl=[" + appBackendUrl + "]");
 
 			Service service = this.restTemplate.getForObject(appBackendUrl + "/service", Service.class);
 			model.addAttribute("name", service.getName());
+			System.out.println("frontend end.");
 			return "home";
 		}
 	}
